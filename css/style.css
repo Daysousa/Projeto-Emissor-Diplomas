@@ -3,43 +3,41 @@
   padding: 0;
   box-sizing: border-box;
 }
- body {
+body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
   color: #333;
- } 
+}
 
- header {
+header {
   background-color: #0b2c5f;
   color: white;
   padding: 24px;
   text-align: center;
- }
+}
 
- main {
+main {
   width: 90%;
   max-width: 1200px;
   margin: 30px auto;
- }
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+}
 
- section {
+section {
   background-color: white;
   padding: 20px;
-  margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
- }
+}
 
- h2 {
+h2 {
   margin-bottom: 15px;
   color: #0b2c5f;
- }
+}
 
- input[type="file"] {
-  margin-bottom: 15px;
- }
-
- button {
+button {
   background-color: #0b2c5f;
   color: white;
   border: none;
@@ -47,16 +45,37 @@
   margin-right: 10px;
   border-radius: 5px;
   cursor: pointer;
- }
+}
 
- button:hover {
+button:hover {
   background-color: #13408a;
- }
+}
+.painel {
+  align-self: start;
+}
 
- #areaDiploma {
-  min-height: 300px;
+.painel input[type="file"] {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.painel button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.preview {
+  min-height: 500px;
+}
+
+#areaDiploma {
+  min-height: 500px;
   border: 2px dashed #ccc;
   padding: 20px;
   background-color: #fafafa;
   text-align: center;
- }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
