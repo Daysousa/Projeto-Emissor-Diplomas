@@ -18,4 +18,45 @@
 
  main {
   width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+ }
+
+ section {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ h2 {
+  margin-bottom: 15px;
+  color: #0b2c5f;
+ }
+
+ input[type="file"] {
+  margin-bottom: 15px;
+ }
+
+ button {
+  background-color: #0b2c5f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+
+ button:hover {
+  background-color: #13408a;
+ }
+
+ #areaDiploma {
+  min-height: 300px;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  background-color: #fafafa;
+  text-align: center;
  }
