@@ -9,17 +9,17 @@
     <header>
       <h1>Emissor de Diplomas</h1>
     </header>
-    <main>
-      <section>
+    <main class="container">
+      <section class="painel">
         <h2>Enviar Planilha</h2>
-
         <input type="file" name="arquivoPlanilha " accept=".xls,.xlsx,.csv" />
+        <br /><br />
         <button type="button" id="gerarArquivo">Gerar Diplomas</button>
         <button type="button" id="downloadArquivo">
           Baixar Diploma em PDF
         </button>
       </section>
-      <section>
+      <section class="preview">
         <h2>Pré-visualização</h2>
         <div id="areaDiploma">O diploma será exibido aqui</div>
       </section>
