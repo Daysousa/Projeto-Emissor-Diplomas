@@ -79,12 +79,11 @@ button:hover {
 }
 
 .diploma {
-  width: 100%;
-  max-width: 900px;
-  min-height: 600px;
-  background-color: #fffdf8;
-  border: 8px solid #d4af37;
-  padding: 50px;
+  position: relative;
+  width: 297mm;
+  height: 210mm;
+  background-color: white;
+  padding: 6cm 3cm;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -95,14 +94,14 @@ button:hover {
 
 .diploma-topo h2 {
   font-size: 48px;
-  color: #0b2c5f;
+  color: black;
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
 .diploma-topo p {
   font-size: 20px;
-  color: #555;
+  color: #black;
 }
 
 .diploma-conteudo {
@@ -113,7 +112,7 @@ button:hover {
 
 .nome-aluno {
   font-size: 36px;
-  color: #0b2c5f;
+  color: black;
   margin: 20px 0;
 }
 
@@ -121,7 +120,7 @@ button:hover {
 .carga-horaria,
 .data-inicio,
 .data-fim,
-.data-emissao {
+.data-emissao span {
   font-weight: bold;
 }
 
@@ -130,18 +129,19 @@ button:hover {
 }
 
 .diploma-assinaturas {
+  margin-top: 1.5cm;
   display: flex;
   justify-content: space-between;
-  gap: 40px;
-  margin-top: 80px;
+  padding: 0 2cm;
+  gap: 11cm;
 }
 
 .assinatura {
-  flex: 1;
+  width: 5cm;
   text-align: center;
 }
 
-.linha-assinatura {
-  border-top: 2px solid #333;
-  margin-bottom: 10px;
+.assinatura-diplomado {
+  margin-top: 0.5cm;
+  text-align: center;
 }
