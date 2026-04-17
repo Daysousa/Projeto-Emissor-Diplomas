@@ -120,7 +120,7 @@ button:hover {
 .carga-horaria,
 .data-inicio,
 .data-fim,
-.data-emissao span {
+.data-emissao {
   font-weight: bold;
 }
 
@@ -144,4 +144,112 @@ button:hover {
 .assinatura-diplomado {
   margin-top: 0.5cm;
   text-align: center;
+}
+
+.diploma-verso {
+  width: 297mm;
+  height: 210mm;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.quadro-verso {
+  width: 110mm;
+  height: 135mm;
+  border: 1px solid #000;
+  margin-top: 15mm;
+  margin-left: 10mm;
+  padding: 5mm 2mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.verso-topo {
+  text-align: center;
+  margin-bottom: 2mm;
+}
+
+.verso-topo p {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
+}
+
+.verso-texto p {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.35;
+  text-align: left;
+  color: #000;
+  margin-bottom: 6mm;
+}
+
+.verso-linha p {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
+  line-height: 2.5;
+}
+
+.campo-linha {
+  display: inline-block;
+  width: 24.5mm;
+  height: 4mm;
+  border-bottom: 1px solid #000;
+  vertical-align: middle;
+}
+
+.campo-processo {
+  display: inline-block;
+  width: 87mm;
+  height: 4mm;
+  border-bottom: 1px solid #000;
+  vertical-align: middle;
+}
+
+.verso-data {
+  text-align: right;
+  margin-bottom: 12mm;
+  line-height: 2;
+}
+
+.verso-data p {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
+}
+
+.verso-centro {
+  margin-top: 1mm;
+  text-align: center;
+}
+
+.verso-centro p {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
+}
+
+.titulo-unidade {
+  font-weight: bold;
+  margin: 0;
+}
+
+.nome-curso {
+  margin-top: 2mm;
+  margin-bottom: 1mm;
+}
+
+.reconhecimento {
+  margin-top: 0;
+}
+
+.verso-assinatura {
+  margin-top: 17mm;
+  padding-top: 5mm;
+  text-align: center;
+  font-family: Calibri, Arial, sans-serif;
+  font-size: 10pt;
+  color: #000;
 }
