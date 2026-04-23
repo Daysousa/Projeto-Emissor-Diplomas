@@ -74,7 +74,7 @@ button:hover {
   padding: 20px;
   background-color: #fafafa;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -101,7 +101,7 @@ button:hover {
 
 .diploma-topo p {
   font-size: 20px;
-  color: #black;
+  color: #000;
 }
 
 .diploma-conteudo {
@@ -252,4 +252,12 @@ button:hover {
   font-family: Calibri, Arial, sans-serif;
   font-size: 10pt;
   color: #000;
+}
+
+.pagina-diploma {
+  display: none;
+}
+
+.pagina-diploma.ativo {
+  display: block;
 }
