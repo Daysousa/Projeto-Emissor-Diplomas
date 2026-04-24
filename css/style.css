@@ -71,7 +71,7 @@ button:hover {
 
 #areaDiploma {
   min-height: 500px;
-  padding: 20px;
+  padding: 10px;
   background-color: #fafafa;
   display: flex;
   align-items: flex-start;
@@ -83,7 +83,7 @@ button:hover {
   width: 297mm;
   height: 210mm;
   background-color: white;
-  padding: 6cm 3cm;
+  padding: 35mm 30mm;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -152,6 +152,7 @@ button:hover {
   background-color: white;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
 }
 
 .quadro-verso {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+
     <title>Emissor de Diplomas</title>
   </head>
   <body>
@@ -18,8 +19,8 @@
         <button type="button" id="downloadArquivo">
           Baixar Diploma em PDF
         </button>
-        <button class="button" id="btnfrente">Ver Frente</button>
-        <button class="button" id="btnverso">Ver Verso</button>
+        <button class="button" id="btnFrente">Ver Frente</button>
+        <button class="button" id="btnVerso">Ver Verso</button>
       </section>
       <section class="preview">
         <h2>Pré-visualização</h2>
@@ -37,13 +38,22 @@
                 <p>confere o título de</p>
               </div>
               <div class="diploma-conteudo">
-                <p>Bacharela em <span class="curso">Nome do curso</span> a</p>
+                <p>
+                  <span class="titulacao">Titulacao</span> em
+                  <span class="curso">Nome do curso</span> a
+                </p>
                 <h3 class="nome-aluno">Nome do aluno</h3>
                 <p>
-                  Brasileira, nascida no estado de Minas Gerais, em 11 de
-                  janeiro de 1996, portadora do RG MG-18.743.162, emitido pela
-                  PC-MG, outorgando-lhe o presente Diploma conforme a legislação
-                  vigente
+                  <span class="nacionalidade">Brasileira</span>,
+                  <span class="nascimento-genero">nascida</span> no estado de
+                  <span class="estado-nascimento">Minas Gerais</span>, em
+                  <span class="data-nascimento">11 de janeiro de 1996</span>,
+                  <span class="portador-genero">portadora</span> do
+                  <span class="tipo-documento">RG</span>
+                  <span class="numero-documento">MG-18.743.162</span>, emitido
+                  <span class="emissao-genero">pela</span>
+                  <span class="orgao-emissor"> PC-MG</span>, outorgando-lhe o
+                  presente Diploma conforme a legislação vigente
                 </p>
                 <p>
                   Carangola,<span class="data-emissao"
@@ -76,13 +86,11 @@
                     inciso IV, nos termos da Resolução SEE nº 5.010, de 10 de
                     maio de 2024, publicada no DOEMG em 11 de maio de 2024.
                   </p>
-                  <div class="verso-texto">
-                    <p>
-                      Diploma registrado nos termos da lei federal nº
-                      9.394/1996, art. 48,§ 1º.(Lei de Diretrizes e Bases da
-                      Educação Nacional)
-                    </p>
-                  </div>
+                  <p>
+                    Diploma registrado nos termos da lei federal nº 9.394/1996,
+                    art. 48,§ 1º.(Lei de Diretrizes e Bases da Educação
+                    Nacional)
+                  </p>
                 </div>
                 <div class="verso-linha">
                   <p>
@@ -99,8 +107,10 @@
                 </div>
                 <div class="verso-centro">
                   <p class="titulo-unidade">UNIDADE ACADÊMICA CARANGOLA</p>
-                  <p class="nome-curso">
-                    Curso Sistemas de Informação - Bacharelado
+                  <p class="nome-curso-verso">
+                    Curso
+                    <span class="curso-verso">Sistemas de Informação</span> -
+                    <span class="modalidade-verso">Bacharelado</span>
                   </p>
                   <p class="reconhecimento">
                     Renovação de Reconhecimento – Resolução SEE nº 4.787, de
@@ -117,5 +127,6 @@
       </section>
     </main>
     <footer></footer>
+    <script src="javascript/script.js"></script>
   </body>
 </html>
