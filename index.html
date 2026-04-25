@@ -12,75 +12,73 @@
       <h1>Emissor de Diplomas</h1>
     </header>
     <main class="container">
-      <section class="painel">
+      <section class="panel">
         <h2>Enviar Planilha</h2>
-        <input type="file" id="arquivoPlanilha" accept=".xls,.xlsx,.csv" />
-        <button type="button" id="gerarArquivo">Gerar Diplomas</button>
-        <button type="button" id="downloadArquivo">
-          Baixar Diploma em PDF
-        </button>
+        <input type="file" id="spreadsheetFile" accept=".xls,.xlsx,.csv" />
+        <button type="button" id="generateFile">Gerar Diplomas</button>
+        <button type="button" id="downloadFile">Baixar Diploma em PDF</button>
         <button class="button" id="btnFrente">Ver Frente</button>
         <button class="button" id="btnVerso">Ver Verso</button>
       </section>
       <section class="preview">
         <h2>Pré-visualização</h2>
-        <div id="areaDiploma">
-          <div class="pagina-diploma anverso ativo">
+        <div id="diplomaArea">
+          <div class="diploma-page front active">
             <div class="diploma">
-              <div class="diploma-topo">
+              <div class="diploma-header">
                 <p>
                   A Reitora da Universidade do Estado de Minas Gerais, Lavínia
                   Rosa Rodrigues, no uso de suas atribuições, tendo em vista a
                   conclusão do curso
-                  <span class="data-inicio">01/01/2024</span> e a colação de
-                  grau em <span class="data-fim">01/03/2024 </span>
+                  <span class="end-date">01/01/2024</span> e a colação de grau
+                  em <span class="graduation-date">01/03/2024 </span>
                 </p>
                 <p>confere o título de</p>
               </div>
-              <div class="diploma-conteudo">
+              <div class="diploma-body">
                 <p>
-                  <span class="titulacao">Titulacao</span> em
-                  <span class="curso">Nome do curso</span> a
+                  <span class="academicDegree">Titulacao</span> em
+                  <span class="program">Nome do curso</span> a
                 </p>
-                <h3 class="nome-aluno">Nome do aluno</h3>
+                <h3 class="student-name">Nome do aluno</h3>
                 <p>
-                  <span class="nacionalidade">Brasileira</span>,
-                  <span class="nascimento-genero">nascida</span> no estado de
-                  <span class="estado-nascimento">Minas Gerais</span>, em
-                  <span class="data-nascimento">11 de janeiro de 1996</span>,
-                  <span class="portador-genero">portadora</span> do
-                  <span class="tipo-documento">RG</span>
-                  <span class="numero-documento">MG-18.743.162</span>, emitido
-                  <span class="emissao-genero">pela</span>
-                  <span class="orgao-emissor"> PC-MG</span>, outorgando-lhe o
-                  presente Diploma conforme a legislação vigente
+                  <span class="nationality">Brasileira</span>,
+                  <span class="birth-gender">nascida</span> no estado de
+                  <span class="birth-state">Minas Gerais</span>, em
+                  <span class="birth-date">11 de janeiro de 1996</span>,
+                  <span class="holder-gender">portadora</span> do
+                  <span class="document-type">RG</span>
+                  <span class="document-number">MG-18.743.162</span>, emitido
+                  <span class="issuer-gender">pela</span>
+                  <span class="issuing-authority"> PC-MG</span>, outorgando-lhe
+                  o presente Diploma conforme a legislação vigente
                 </p>
                 <p>
-                  Carangola,<span class="data-emissao"
+                  Carangola,<span class="issue-date"
                     >20 de dezembro de 2025.</span
                   >
                 </p>
               </div>
-              <div class="diploma-assinaturas">
-                <div class="assinatura">
+              <div class="diploma-signatures">
+                <div class="signatures">
                   <p>Diretor</p>
                 </div>
-                <div class="assinatura">
+                <div class="signatures">
                   <p>Reitora</p>
                 </div>
               </div>
             </div>
-            <div class="assinatura-diplomado">
+            <div class="graduate-signature">
               <p>Diplomado</p>
             </div>
           </div>
-          <div class="pagina-diploma verso">
-            <div class="diploma-verso">
-              <div class="quadro-verso">
-                <div class="verso-topo">
+          <div class="diploma-page back">
+            <div class="diploma-back">
+              <div class="back-frame">
+                <div class="back-header">
                   <p>UNIVERSIDADE DO ESTADO DE MINAS GERAIS</p>
                 </div>
-                <div class="verso-texto">
+                <div class="back-text">
                   <p>
                     Recredenciada conforme a Lei federal nº 9.394/1996, art. 10,
                     inciso IV, nos termos da Resolução SEE nº 5.010, de 10 de
@@ -92,32 +90,32 @@
                     Nacional)
                   </p>
                 </div>
-                <div class="verso-linha">
+                <div class="back-row">
                   <p>
-                    Sob o nº <span class="campo-linha"></span> Livro
-                    <span class="campo-linha"></span> Folha
-                    <span class="campo-linha"></span>
+                    Sob o nº <span class="field-row"></span> Livro
+                    <span class="field-row"></span> Folha
+                    <span class="field-row"></span>
                   </p>
                 </div>
-                <div class="verso-linha">
-                  <p>Processo nº <span class="campo-processo"></span></p>
+                <div class="back-row">
+                  <p>Processo nº <span class="process-field"></span></p>
                 </div>
-                <div class="verso-data">
+                <div class="back-date">
                   <p>Belo Horizonte, ____ / ____ / ______</p>
                 </div>
-                <div class="verso-centro">
-                  <p class="titulo-unidade">UNIDADE ACADÊMICA CARANGOLA</p>
-                  <p class="nome-curso-verso">
+                <div class="back-center">
+                  <p class="academic-unit-title">UNIDADE ACADÊMICA CARANGOLA</p>
+                  <p class="back-program-name">
                     Curso
-                    <span class="curso-verso">Sistemas de Informação</span> -
-                    <span class="modalidade-verso">Bacharelado</span>
+                    <span class="program-back">Sistemas de Informação</span> -
+                    <span class="back-degree-type">Bacharelado</span>
                   </p>
-                  <p class="reconhecimento">
+                  <p class="accreditation">
                     Renovação de Reconhecimento – Resolução SEE nº 4.787, de
                     09/11/2022, publicado em 11/11/2022.
                   </p>
                 </div>
-                <div class="verso-assinatura">
+                <div class="back-row">
                   <p>Pró-Reitor(a) de Graduação</p>
                 </div>
               </div>
