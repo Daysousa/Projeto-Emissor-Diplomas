@@ -50,16 +50,16 @@ button {
 button:hover {
   background-color: #13408a;
 }
-.painel {
+.panel {
   align-self: start;
 }
 
-.painel input[type="file"] {
+.panel input[type="file"] {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.painel button {
+.panel button {
   display: block;
   width: 100%;
   margin-bottom: 10px;
@@ -69,7 +69,7 @@ button:hover {
   min-height: 500px;
 }
 
-#areaDiploma {
+#diplomaArea {
   min-height: 500px;
   padding: 10px;
   background-color: #fafafa;
@@ -87,48 +87,48 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.diploma-topo {
+.diploma-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.diploma-topo h2 {
+.diploma-header h2 {
   font-size: 48px;
   color: black;
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
-.diploma-topo p {
+.diploma-header p {
   font-size: 20px;
   color: #000;
 }
 
-.diploma-conteudo {
+.diploma-body {
   text-align: center;
   line-height: 1.8;
   font-size: 20px;
 }
 
-.nome-aluno {
+.student-name {
   font-size: 36px;
   color: black;
   margin: 20px 0;
 }
 
-.curso,
-.carga-horaria,
-.data-inicio,
-.data-fim,
-.data-emissao {
+.program,
+.student-name,
+.end-date,
+.graduation-date,
+.issue-date {
   font-weight: bold;
 }
 
-.data-emissao {
+.issue-date {
   font-size: 30px;
 }
 
-.diploma-assinaturas {
+.diploma-signatures {
   margin-top: 1.5cm;
   display: flex;
   justify-content: space-between;
@@ -136,17 +136,17 @@ button:hover {
   gap: 11cm;
 }
 
-.assinatura {
+.signatures {
   width: 5cm;
   text-align: center;
 }
 
-.assinatura-diplomado {
+.graduate-signature {
   margin-top: 0.5cm;
   text-align: center;
 }
 
-.diploma-verso {
+.diploma-back {
   width: 297mm;
   height: 210mm;
   background-color: white;
@@ -155,7 +155,7 @@ button:hover {
   overflow: hidden;
 }
 
-.quadro-verso {
+.back-frame {
   width: 110mm;
   height: 135mm;
   border: 1px solid #000;
@@ -166,18 +166,18 @@ button:hover {
   flex-direction: column;
 }
 
-.verso-topo {
+.back-text {
   text-align: center;
   margin-bottom: 2mm;
 }
 
-.verso-topo p {
+.back-text p {
   font-family: "Calibri", Arial, sans-serif;
   font-size: 10pt;
   color: #000;
 }
 
-.verso-texto p {
+.back-text p {
   font-family: "Calibri", Arial, sans-serif;
   font-size: 10pt;
   line-height: 1.35;
@@ -186,14 +186,14 @@ button:hover {
   margin-bottom: 6mm;
 }
 
-.verso-linha p {
+.back-row p {
   font-family: "Calibri", Arial, sans-serif;
   font-size: 10pt;
   color: #000;
   line-height: 2.5;
 }
 
-.campo-linha {
+.field-row {
   display: inline-block;
   width: 24.5mm;
   height: 4mm;
@@ -201,7 +201,7 @@ button:hover {
   vertical-align: middle;
 }
 
-.campo-processo {
+.process-field {
   display: inline-block;
   width: 87mm;
   height: 4mm;
@@ -209,44 +209,44 @@ button:hover {
   vertical-align: middle;
 }
 
-.verso-data {
+.back-date {
   text-align: right;
   margin-bottom: 12mm;
   line-height: 2;
 }
 
-.verso-data p {
+.back-date p {
   font-family: "Calibri", Arial, sans-serif;
   font-size: 10pt;
   color: #000;
 }
 
-.verso-centro {
+.back-center {
   margin-top: 1mm;
   text-align: center;
 }
 
-.verso-centro p {
+.back-center p {
   font-family: "Calibri", Arial, sans-serif;
   font-size: 10pt;
   color: #000;
 }
 
-.titulo-unidade {
+.academic-unit-title {
   font-weight: bold;
   margin: 0;
 }
 
-.nome-curso {
+.back-program-name {
   margin-top: 2mm;
   margin-bottom: 1mm;
 }
 
-.reconhecimento {
+.accreditation {
   margin-top: 0;
 }
 
-.verso-assinatura {
+.back-row {
   margin-top: 17mm;
   padding-top: 5mm;
   text-align: center;
@@ -255,10 +255,10 @@ button:hover {
   color: #000;
 }
 
-.pagina-diploma {
+.diploma-page back {
   display: none;
 }
 
-.pagina-diploma.ativo {
+.diploma-page front active {
   display: block;
 }
