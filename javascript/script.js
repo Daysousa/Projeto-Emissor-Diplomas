@@ -52,6 +52,12 @@ function fillDiploma(student) {
 
   document.querySelector(".end-date").textContent = student.startDate;
   document.querySelector(".graduation-date").textContent = student.endDate;
+  document.querySelector(".degree").textContent = texts.degree;
+  document.querySelector(".program").textContent = student.program;
+  document.querySelector(".name-student").textContent = student.name;
+
+  document.querySelector(".end-date").textContent = student.endDate;
+  document.querySelector(".graduation-date").textContent = student.graduationDate;
   document.querySelector(".issue-date").textContent = student.issueDate;
 
   document.querySelector(".nationality").textContent = texts.nationality;
@@ -69,6 +75,23 @@ function fillDiploma(student) {
   document.querySelector(".program-back").textContent = student.program;
   document.querySelector(".back-degree-type").textContent = student.degree;
   document.querySelector(".accreditation").textContent = student.accreditation;
+  document.querySelector(".birth-state").textContent =
+    student.birthState;
+  document.querySelector(".birth-date").textContent =
+    student.birthDate;
+  document.querySelector(".holder-gender").textContent = texts.holder;
+  document.querySelector(".document-type").textContent = stundet.documentType;
+  document.querySelector(".document-number").textContent =
+    stundent.documentoNumber;
+  document.querySelector(".issuer-gender").textContent = student.issuerGender;
+  document.querySelector(".issuing-authority").textContent = student.issuingAuthority;
+
+  document.querySelector(".graduate-signature p").textContent =
+    texts.diplomado;
+
+  document.querySelector(".program-back").textContent = student.program;
+  document.querySelector(".degree-back").textContent = stundent.degree;
+  document.querySelector(".accreditation").textContent = stundent.accreditation;
 }
 
 const testStudent = {
