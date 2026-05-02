@@ -1,26 +1,26 @@
 const btnFront = document.getElementById("btnFront");
 const btnBack = document.getElementById("btnBack");
 
-const front = document.querySelector(".diploma-front");
-const back = document.querySelector(".diploma-back");
+const front = document.querySelector(".front");
+const back = document.querySelector(".back");
 
 btnFront.addEventListener("click", () => {
   front.classList.add("active");
   back.classList.remove("active");
 });
 
-btnVerso.addEventListener("click", () => {
+btnBack.addEventListener("click", () => {
   back.classList.add("active");
   front.classList.remove("active");
 });
 
-function settextByGenderAndDegreeType(gender, degree) {
+function setTextByGenderAndDegreeType(gender, degree) {
   const formattedGender = gender.trim().toLowerCase();
   const formattedDegree = degree.trim().toLowerCase();
 
   const isMale =
     formattedGender === "m" || formattedGender === "masculino";
-  
+
   let degreeTitle = "";
 
   if (formattedDegree === "bacharelado") {
@@ -34,18 +34,24 @@ function settextByGenderAndDegreeType(gender, degree) {
   return {
     birth: isMale ? "nascido" : "nascida",
     holder: isMale ? "portador" : "portadora",
-    gradute: isMale ? "Diplomado" : "Diplomada",
+    graduate: isMale ? "Diplomado" : "Diplomada",
     nationality: isMale ? "Brasileiro" : "Brasileira",
     degreeTitle: degreeTitle
   };
 }
 
 function fillDiploma(student) {
-  const texts = gitTextByGenderAndDegreeType(
+  const texts = setTextByGenderAndDegreeType(
     student.gender,
     student.degree
   );
 
+  document.querySelector(".academicDegree").textContent = texts.degreeTitle;
+  document.querySelector(".program").textContent = student.program;
+  document.querySelector(".student-name").textContent = student.name;
+
+  document.querySelector(".end-date").textContent = student.startDate;
+  document.querySelector(".graduation-date").textContent = student.endDate;
   document.querySelector(".degree").textContent = texts.degree;
   document.querySelector(".program").textContent = student.program;
   document.querySelector(".name-student").textContent = student.name;
@@ -56,6 +62,19 @@ function fillDiploma(student) {
 
   document.querySelector(".nationality").textContent = texts.nationality;
   document.querySelector(".birth-gender").textContent = texts.birth;
+  document.querySelector(".birth-state").textContent = student.birthState;
+  document.querySelector(".birth-date").textContent = student.birthDate;
+  document.querySelector(".holder-gender").textContent = texts.holder;
+  document.querySelector(".document-type").textContent = student.documentType;
+  document.querySelector(".document-number").textContent = student.documentNumber;
+  document.querySelector(".issuing-authority").textContent =
+    student.issuingAuthority;
+
+  document.querySelector(".graduate-signature p").textContent = texts.graduate;
+
+  document.querySelector(".program-back").textContent = student.program;
+  document.querySelector(".back-degree-type").textContent = student.degree;
+  document.querySelector(".accreditation").textContent = student.accreditation;
   document.querySelector(".birth-state").textContent =
     student.birthState;
   document.querySelector(".birth-date").textContent =

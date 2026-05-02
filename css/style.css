@@ -255,10 +255,10 @@ button:hover {
   color: #000;
 }
 
-.diploma-page back {
+.diploma-page {
   display: none;
 }
 
-.diploma-page front active {
+.diploma-page.active {
   display: block;
 }
