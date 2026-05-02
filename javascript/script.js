@@ -1,94 +1,91 @@
-const btnFrente = document.getElementById("btnFrente");
-const btnVerso = document.getElementById("btnVerso");
+const btnFront = document.getElementById("btnFront");
+const btnBack = document.getElementById("btnBack");
 
-const anverso = document.querySelector(".anverso");
-const verso = document.querySelector(".verso");
+const front = document.querySelector(".front");
+const back = document.querySelector(".back");
 
-btnFrente.addEventListener("click", () => {
-  anverso.classList.add("ativo");
-  verso.classList.remove("ativo");
+btnFront.addEventListener("click", () => {
+  front.classList.add("active");
+  back.classList.remove("active");
 });
 
-btnVerso.addEventListener("click", () => {
-  verso.classList.add("ativo");
-  anverso.classList.remove("ativo");
+btnBack.addEventListener("click", () => {
+  back.classList.add("active");
+  front.classList.remove("active");
 });
 
-function definirTextoPorGeneroEModalidade(genero, modalidade) {
-  const generoFormatado = genero.trim().toLowerCase();
-  const modalidadeFormatada = modalidade.trim().toLowerCase();
+function setTextByGenderAndDegreeType(gender, degree) {
+  const formattedGender = gender.trim().toLowerCase();
+  const formattedDegree = degree.trim().toLowerCase();
 
-  const masculino =
-    generoFormatado === "m" || generoFormatado === "masculino";
+  const isMale =
+    formattedGender === "m" || formattedGender === "masculino";
 
-  let titulacao = "";
+  let degreeTitle = "";
 
-  if (modalidadeFormatada === "bacharelado") {
-    titulacao = masculino ? "Bacharel" : "Bacharela";
+  if (formattedDegree === "bacharelado") {
+    degreeTitle = isMale ? "Bacharel" : "Bacharela";
   }
 
-  if (modalidadeFormatada === "licenciatura") {
-    titulacao = masculino ? "Licenciado" : "Licenciada";
+  if (formattedDegree === "licenciatura") {
+    degreeTitle = isMale ? "Licenciado" : "Licenciada";
   }
 
   return {
-    nascimento: masculino ? "nascido" : "nascida",
-    portador: masculino ? "portador" : "portadora",
-    diplomado: masculino ? "Diplomado" : "Diplomada",
-    nacionalidade: masculino ? "Brasileiro" : "Brasileira",
-    titulacao: titulacao
+    birth: isMale ? "nascido" : "nascida",
+    holder: isMale ? "portador" : "portadora",
+    graduate: isMale ? "Diplomado" : "Diplomada",
+    nationality: isMale ? "Brasileiro" : "Brasileira",
+    degreeTitle: degreeTitle
   };
 }
 
-function preencherDiploma(aluno) {
-  const textos = definirTextoPorGeneroEModalidade(
-    aluno.genero,
-    aluno.modalidade
+function fillDiploma(student) {
+  const texts = setTextByGenderAndDegreeType(
+    student.gender,
+    student.degree
   );
 
-  document.querySelector(".titulacao").textContent = textos.titulacao;
-  document.querySelector(".curso").textContent = aluno.curso;
-  document.querySelector(".nome-aluno").textContent = aluno.nome;
+  document.querySelector(".academicDegree").textContent = texts.degreeTitle;
+  document.querySelector(".program").textContent = student.program;
+  document.querySelector(".student-name").textContent = student.name;
 
-  document.querySelector(".data-inicio").textContent = aluno.dataInicio;
-  document.querySelector(".data-fim").textContent = aluno.dataFim;
-  document.querySelector(".data-emissao").textContent = aluno.dataEmissao;
+  document.querySelector(".end-date").textContent = student.startDate;
+  document.querySelector(".graduation-date").textContent = student.endDate;
+  document.querySelector(".issue-date").textContent = student.issueDate;
 
-  document.querySelector(".nacionalidade").textContent = textos.nacionalidade;
-  document.querySelector(".nascimento-genero").textContent = textos.nascimento;
-  document.querySelector(".estado-nascimento").textContent =
-    aluno.estadoNascimento;
-  document.querySelector(".data-nascimento").textContent =
-    aluno.dataNascimento;
-  document.querySelector(".portador-genero").textContent = textos.portador;
-  document.querySelector(".tipo-documento").textContent = aluno.tipoDocumento;
-  document.querySelector(".numero-documento").textContent =
-    aluno.numeroDocumento;
-  document.querySelector(".orgao-emissor").textContent = aluno.orgaoEmissor;
+  document.querySelector(".nationality").textContent = texts.nationality;
+  document.querySelector(".birth-gender").textContent = texts.birth;
+  document.querySelector(".birth-state").textContent = student.birthState;
+  document.querySelector(".birth-date").textContent = student.birthDate;
+  document.querySelector(".holder-gender").textContent = texts.holder;
+  document.querySelector(".document-type").textContent = student.documentType;
+  document.querySelector(".document-number").textContent = student.documentNumber;
+  document.querySelector(".issuing-authority").textContent =
+    student.issuingAuthority;
 
-  document.querySelector(".assinatura-diplomado p").textContent =
-    textos.diplomado;
+  document.querySelector(".graduate-signature p").textContent = texts.graduate;
 
-  document.querySelector(".curso-verso").textContent = aluno.curso;
-  document.querySelector(".modalidade-verso").textContent = aluno.modalidade;
-  document.querySelector(".reconhecimento").textContent = aluno.reconhecimento;
+  document.querySelector(".program-back").textContent = student.program;
+  document.querySelector(".back-degree-type").textContent = student.degree;
+  document.querySelector(".accreditation").textContent = student.accreditation;
 }
 
-const alunoTeste = {
-  nome: "Maria Eduarda Silva",
-  genero: "feminino",
-  modalidade: "bacharelado",
-  curso: "Sistemas de Informação",
-  estadoNascimento: "Minas Gerais",
-  dataNascimento: "11 de janeiro de 1996",
-  tipoDocumento: "RG",
-  numeroDocumento: "MG-18.743.162",
-  orgaoEmissor: "PC-MG",
-  dataInicio: "01/01/2024",
-  dataFim: "01/03/2024",
-  dataEmissao: "20 de dezembro de 2025",
-  reconhecimento:
+const testStudent = {
+  name: "Maria Eduarda Silva",
+  gender: "feminino",
+  degree: "bacharelado",
+  program: "Sistemas de Informação",
+  birthState: "Minas Gerais",
+  birthDate: "11 de janeiro de 1996",
+  documentType: "RG",
+  documentNumber: "MG-18.743.162",
+  issuingAuthority: "PC-MG",
+  startDate: "01/01/2024",
+  endDate: "01/03/2024",
+  issueDate: "20 de dezembro de 2025",
+  accreditation:
     "Renovação de Reconhecimento – Resolução SEE nº 4.787, de 09/11/2022, publicado em 11/11/2022."
 };
 
-preencherDiploma(alunoTeste);
+fillDiploma(testStudent);
