@@ -14,29 +14,35 @@ btnBack.addEventListener("click", () => {
   front.classList.remove("active");
 });
 
-function setTextByGenderAndDegreeType(gender, degree) {
-  const formattedGender = gender.trim().toLowerCase();
-  const formattedDegree = degree.trim().toLowerCase();
+function isMale(gender) {
+  const formatted = gender.trim().toLowerCase();
+  return formatted === "m" || formatted === "male" || formatted === "masculino";
+}
 
-  const isMale =
-    formattedGender === "m" || formattedGender === "masculino";
+function setTextByGenderAndDegreeType(gender, degree) {
+  const formattedDegree = degree.trim().toLowerCase();
+  const isMaleStudent = isMale(gender);
+
 
   let degreeTitle = "";
 
-  if (formattedDegree === "bacharelado") {
-    degreeTitle = isMale ? "Bacharel" : "Bacharela";
+  if (formattedDegree === "bachelor") {
+    degreeTitle = isMaleStudent ? "Bacharel" : "Bacharela";
   }
 
-  if (formattedDegree === "licenciatura") {
-    degreeTitle = isMale ? "Licenciado" : "Licenciada";
+  if (formattedDegree === "licentiate") {
+    degreeTitle = isMaleStudent ? "Licenciado" : "Licenciada";
   }
 
   return {
-    birth: isMale ? "nascido" : "nascida",
-    holder: isMale ? "portador" : "portadora",
-    graduate: isMale ? "Diplomado" : "Diplomada",
-    nationality: isMale ? "Brasileiro" : "Brasileira",
-    degreeTitle: degreeTitle
+  gender: isMaleStudent,
+  words: {
+    birth: isMaleStudent ? "nascido" : "nascida",
+    holder: isMaleStudent ? "portador" : "portadora",
+    graduate: isMaleStudent ? "Diplomado" : "Diplomada",
+    nationality: isMaleStudent ? "Brasileiro" : "Brasileira"
+  },
+  degreeTitle
   };
 }
 
@@ -45,67 +51,46 @@ function fillDiploma(student) {
     student.gender,
     student.degree
   );
-
+  // Diploma frente
   document.querySelector(".academicDegree").textContent = texts.degreeTitle;
   document.querySelector(".program").textContent = student.program;
   document.querySelector(".student-name").textContent = student.name;
-
-  document.querySelector(".end-date").textContent = student.startDate;
-  document.querySelector(".graduation-date").textContent = student.endDate;
-  document.querySelector(".degree").textContent = texts.degree;
-  document.querySelector(".program").textContent = student.program;
-  document.querySelector(".name-student").textContent = student.name;
 
   document.querySelector(".end-date").textContent = student.endDate;
   document.querySelector(".graduation-date").textContent = student.graduationDate;
   document.querySelector(".issue-date").textContent = student.issueDate;
 
-  document.querySelector(".nationality").textContent = texts.nationality;
-  document.querySelector(".birth-gender").textContent = texts.birth;
+  document.querySelector(".nationality").textContent = texts.words.nationality;
+  document.querySelector(".birth-gender").textContent = texts.words.birth;
   document.querySelector(".birth-state").textContent = student.birthState;
   document.querySelector(".birth-date").textContent = student.birthDate;
-  document.querySelector(".holder-gender").textContent = texts.holder;
+  document.querySelector(".holder-gender").textContent = texts.words.holder;
+
   document.querySelector(".document-type").textContent = student.documentType;
   document.querySelector(".document-number").textContent = student.documentNumber;
   document.querySelector(".issuing-authority").textContent =
     student.issuingAuthority;
 
-  document.querySelector(".graduate-signature p").textContent = texts.graduate;
+  document.querySelector(".graduate-signature p").textContent = texts.words.graduate;
 
+  // Diploma verso
   document.querySelector(".program-back").textContent = student.program;
-  document.querySelector(".back-degree-type").textContent = student.degree;
+  document.querySelector(".degree-back").textContent = student.degree;
   document.querySelector(".accreditation").textContent = student.accreditation;
-  document.querySelector(".birth-state").textContent =
-    student.birthState;
-  document.querySelector(".birth-date").textContent =
-    student.birthDate;
-  document.querySelector(".holder-gender").textContent = texts.holder;
-  document.querySelector(".document-type").textContent = stundet.documentType;
-  document.querySelector(".document-number").textContent =
-    stundent.documentoNumber;
-  document.querySelector(".issuer-gender").textContent = student.issuerGender;
-  document.querySelector(".issuing-authority").textContent = student.issuingAuthority;
-
-  document.querySelector(".graduate-signature p").textContent =
-    texts.diplomado;
-
-  document.querySelector(".program-back").textContent = student.program;
-  document.querySelector(".degree-back").textContent = stundent.degree;
-  document.querySelector(".accreditation").textContent = stundent.accreditation;
 }
 
 const testStudent = {
   name: "Maria Eduarda Silva",
   gender: "feminino",
-  degree: "bacharelado",
+  degree: "bachelor",
   program: "Sistemas de Informação",
   birthState: "Minas Gerais",
   birthDate: "11 de janeiro de 1996",
   documentType: "RG",
   documentNumber: "MG-18.743.162",
   issuingAuthority: "PC-MG",
-  startDate: "01/01/2024",
   endDate: "01/03/2024",
+  graduationDate: "19 de dezembro de 2025",
   issueDate: "20 de dezembro de 2025",
   accreditation:
     "Renovação de Reconhecimento – Resolução SEE nº 4.787, de 09/11/2022, publicado em 11/11/2022."
