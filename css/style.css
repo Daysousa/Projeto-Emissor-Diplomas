@@ -1,10 +1,18 @@
+@font-face {
+  font-family: "lucida-calligra";
+  src: url(../fonts/Lucida\ Calligraphy\ Italic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -111,16 +119,15 @@ button:hover {
 }
 
 .student-name {
+  font-family: "lucida-calligra", serif;
   font-size: 36px;
   color: black;
   margin: 20px 0;
 }
 
-.program,
 .student-name,
-.end-date,
-.graduation-date,
-.issue-date {
+.issue-date,
+.location {
   font-weight: bold;
 }
 
@@ -145,6 +152,8 @@ button:hover {
   margin-top: 0.5cm;
   text-align: center;
 }
+
+/* Diploma Verso */
 
 .diploma-back {
   width: 297mm;
@@ -172,13 +181,13 @@ button:hover {
 }
 
 .back-text p {
-  font-family: "Calibri", Arial, sans-serif;
+  font-family: "century-italic", sans-serif;
   font-size: 10pt;
   color: #000;
 }
 
 .back-text p {
-  font-family: "Calibri", Arial, sans-serif;
+  font-family: "century-italic", sans-serif;
   font-size: 10pt;
   line-height: 1.35;
   text-align: left;
