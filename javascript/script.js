@@ -14,6 +14,40 @@ btnBack.addEventListener("click", () => {
   front.classList.remove("active");
 });
 
+let students = []
+let currentStudentIndex = 0;
+
+const spreadsheetFile = document.getElementById("spreadsheetFile");
+const generateFile = document.getElementById("generateFile");
+
+generateFile.addEventListener("click" , () => {
+  const file = spreadsheetFile.files[0];
+
+  if (!file) {
+    alert("Selecione uma planilha primeiro");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = (event) => {
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data, {type: "array"});
+
+    const firstSheetName = workbook.SheetNames [0];
+    const worksheet = workbook.Sheets[firstSheetName];
+
+    student = XLSX.utils.sheet_to_json(worksheet);
+
+    console.log(students);
+
+    currentStudentIndex = 0;
+
+    fillDiploma(students[currentStudentIndex]);
+  }
+  reader.readAsArrayBuffer(file);
+});
+
 function isMale(gender) {
   const formatted = gender.trim().toLowerCase();
   return formatted === "m" || formatted === "male" || formatted === "masculino";
@@ -75,7 +109,7 @@ function fillDiploma(student) {
 
   // Diploma verso
   document.querySelector(".program-back").textContent = student.program;
-  document.querySelector(".degree-back").textContent = student.degree;
+  document.querySelector(".back-degree-type").textContent = student.degree;
   document.querySelector(".accreditation").textContent = student.accreditation;
 }
 
