@@ -16,9 +16,12 @@
         <h2>Enviar Planilha</h2>
         <input type="file" id="spreadsheetFile" accept=".xls,.xlsx,.csv" />
         <button type="button" id="generateFile">Gerar Diplomas</button>
+        <button id="previousStudent">Aluno Anterior</button>
+        <button id="nextStudent">Próximo Aluno</button>
         <button type="button" id="downloadFile">Baixar Diploma em PDF</button>
         <button class="button" id="btnFront">Ver Frente</button>
         <button class="button" id="btnBack">Ver Verso</button>
+        <p id="studentCounter">Nenhum aluno carregado</p>
       </section>
       <section class="preview">
         <h2>Pré-visualização</h2>
@@ -124,7 +127,6 @@
       </section>
     </main>
     <footer></footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="libs/xlsx.full.min.js"></script>
     <script src="javascript/script.js"></script>
   </body>
