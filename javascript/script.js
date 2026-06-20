@@ -10,6 +10,8 @@ const generateFile = document.getElementById("generateFile");
 const previousStudent = document.getElementById("previousStudent");
 const nextStudent = document.getElementById("nextStudent");
 
+const downloadFile = document.getElementById("downloadFile");
+
 let students = [];
 let currentStudentIndex = 0;
 
@@ -106,6 +108,57 @@ generateFile.addEventListener("click", () => {
   reader.readAsArrayBuffer(file);
 });
 
+downloadFile.addEventListener("click", () => {
+  if (students.length === 0) {
+    alert("Nenhum aluno carregado.");
+    return;
+  }
+
+  const student = students[currentStudentIndex];
+
+  // Clona a frente e o verso
+  const frontPage = document.querySelector(".front").cloneNode(true);
+  const backPage = document.querySelector(".back").cloneNode(true);
+
+  // Força as duas páginas a aparecerem
+  frontPage.classList.add("active");
+  backPage.classList.add("active");
+
+  frontPage.style.display = "block";
+  backPage.style.display = "block";
+
+  // Cria container temporário
+  const pdfContainer = document.createElement("div");
+
+  frontPage.style.pageBreakAfter = "always";
+
+  pdfContainer.appendChild(frontPage);
+  pdfContainer.appendChild(backPage);
+
+  const options = {
+    margin: 0,
+    filename: `${student.name}.pdf`,
+    image: {
+      type: "jpeg",
+      quality: 1
+    },
+    html2canvas: {
+      scale: 2,
+      useCORS: true
+    },
+    jsPDF: {
+      unit: "mm",
+      format: "a4",
+      orientation: "landscape"
+    }
+  };
+
+  html2pdf()
+    .set(options)
+    .from(pdfContainer)
+    .save();
+});
+
 function isMale(gender) {
   const formatted = String(gender).trim().toLowerCase();
 
@@ -190,18 +243,14 @@ function fillDiploma(student) {
 
   document.querySelector(".document-type").textContent = student.documentType;
   document.querySelector(".document-number").textContent = student.documentNumber;
-  document.querySelector(".issuing-authority").textContent =
-    student.issuingAuthority;
+  document.querySelector(".issuing-authority").textContent = student.issuingAuthority;
 
-  document.querySelector(".graduate-signature p").textContent =
-    texts.words.graduate;
+  document.querySelector(".graduate-signature p").textContent = texts.words.graduate;
 
   document.querySelector(".program-back").textContent = student.program;
-  document.querySelector(".back-degree-type").textContent = formatDegreeLabel(
-    student.degree
-  );
-  document.querySelector(".accreditation").textContent =
-    student.accreditation || "Reconhecimento não informado.";
+  document.querySelector(".back-degree-type").textContent = formatDegreeLabel
+  (student.degree);
+  document.querySelector(".accreditation").textContent = student.accreditation || "Reconhecimento não informado.";
 }
 
 function formatDegreeLabel(degree) {
