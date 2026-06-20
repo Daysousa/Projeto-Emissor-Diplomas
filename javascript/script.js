@@ -148,19 +148,44 @@ function fillDiploma(student) {
     student.gender,
     student.degree
   );
+  function formatDate(dateValue) {
+  if (!dateValue) return "";
+
+  let date;
+
+  if (typeof dateValue === "number") {
+    date = XLSX.SSF.parse_date_code(dateValue);
+    date = new Date(date.y, date.m - 1, date.d);
+  } else {
+    const parts = String(dateValue).split("/");
+
+    if (parts.length === 3) {
+      date = new Date(parts[2], parts[1] - 1, parts[0]);
+    } else {
+      return dateValue;
+    }
+  }
+
+  return date.toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
 
   document.querySelector(".academicDegree").textContent = texts.degreeTitle;
   document.querySelector(".program").textContent = student.program;
   document.querySelector(".student-name").textContent = student.name;
 
-  document.querySelector(".end-date").textContent = student.conclusionDate;
-  document.querySelector(".graduation-date").textContent = student.graduationDate;
-  document.querySelector(".issue-date").textContent = student.issueDate;
+  document.querySelector(".end-date").textContent = formatDate(student.conclusionDate);
+  document.querySelector(".graduation-date").textContent = formatDate(student.graduationDate);
+  document.querySelector(".issue-date").textContent = formatDate(student.issueDate);
+
 
   document.querySelector(".nationality").textContent = texts.words.nationality;
   document.querySelector(".birth-gender").textContent = texts.words.birth;
   document.querySelector(".birth-state").textContent = student.birthState;
-  document.querySelector(".birth-date").textContent = student.birthDate;
+  document.querySelector(".birth-date").textContent = formatDate(student.birthDate);
   document.querySelector(".holder-gender").textContent = texts.words.holder;
 
   document.querySelector(".document-type").textContent = student.documentType;
