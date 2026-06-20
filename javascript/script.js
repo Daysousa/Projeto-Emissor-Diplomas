@@ -14,13 +14,13 @@ btnBack.addEventListener("click", () => {
   front.classList.remove("active");
 });
 
-let students = []
+let students = [];
 let currentStudentIndex = 0;
 
 const spreadsheetFile = document.getElementById("spreadsheetFile");
 const generateFile = document.getElementById("generateFile");
 
-generateFile.addEventListener("click" , () => {
+generateFile.addEventListener("click", () => {
   const file = spreadsheetFile.files[0];
 
   if (!file) {
@@ -32,51 +32,59 @@ generateFile.addEventListener("click" , () => {
 
   reader.onload = (event) => {
     const data = new Uint8Array(event.target.result);
-    const workbook = XLSX.read(data, {type: "array"});
+    const workbook = XLSX.read(data, { type: "array" });
 
-    const firstSheetName = workbook.SheetNames [0];
+    const firstSheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[firstSheetName];
 
-    student = XLSX.utils.sheet_to_json(worksheet);
+    students = XLSX.utils.sheet_to_json(worksheet);
 
     console.log(students);
 
     currentStudentIndex = 0;
 
-    fillDiploma(students[currentStudentIndex]);
-  }
+    if (students.length > 0) {
+      fillDiploma(students[currentStudentIndex]);
+    }
+  };
+
   reader.readAsArrayBuffer(file);
 });
 
 function isMale(gender) {
-  const formatted = gender.trim().toLowerCase();
-  return formatted === "m" || formatted === "male" || formatted === "masculino";
+  const formatted = String(gender).trim().toLowerCase();
+
+  return (
+    formatted === "true" ||
+    formatted === "m" ||
+    formatted === "male" ||
+    formatted === "masculino"
+  );
 }
 
 function setTextByGenderAndDegreeType(gender, degree) {
-  const formattedDegree = degree.trim().toLowerCase();
+  const formattedDegree = String(degree).trim().toLowerCase();
   const isMaleStudent = isMale(gender);
-
 
   let degreeTitle = "";
 
-  if (formattedDegree === "bachelor") {
+  if (formattedDegree === "bachelor" || formattedDegree === "bacharelado") {
     degreeTitle = isMaleStudent ? "Bacharel" : "Bacharela";
   }
 
-  if (formattedDegree === "licentiate") {
+  if (formattedDegree === "licentiate" || formattedDegree === "licenciatura") {
     degreeTitle = isMaleStudent ? "Licenciado" : "Licenciada";
   }
 
   return {
-  gender: isMaleStudent,
-  words: {
-    birth: isMaleStudent ? "nascido" : "nascida",
-    holder: isMaleStudent ? "portador" : "portadora",
-    graduate: isMaleStudent ? "Diplomado" : "Diplomada",
-    nationality: isMaleStudent ? "Brasileiro" : "Brasileira"
-  },
-  degreeTitle
+    gender: isMaleStudent,
+    words: {
+      birth: isMaleStudent ? "nascido" : "nascida",
+      holder: isMaleStudent ? "portador" : "portadora",
+      graduate: isMaleStudent ? "Diplomado" : "Diplomada",
+      nationality: isMaleStudent ? "Brasileiro" : "Brasileira"
+    },
+    degreeTitle
   };
 }
 
@@ -85,12 +93,13 @@ function fillDiploma(student) {
     student.gender,
     student.degree
   );
+
   // Diploma frente
   document.querySelector(".academicDegree").textContent = texts.degreeTitle;
   document.querySelector(".program").textContent = student.program;
   document.querySelector(".student-name").textContent = student.name;
 
-  document.querySelector(".end-date").textContent = student.endDate;
+  document.querySelector(".end-date").textContent = student.conclusionDate;
   document.querySelector(".graduation-date").textContent = student.graduationDate;
   document.querySelector(".issue-date").textContent = student.issueDate;
 
@@ -105,29 +114,11 @@ function fillDiploma(student) {
   document.querySelector(".issuing-authority").textContent =
     student.issuingAuthority;
 
-  document.querySelector(".graduate-signature p").textContent = texts.words.graduate;
+  document.querySelector(".graduate-signature p").textContent =
+    texts.words.graduate;
 
   // Diploma verso
   document.querySelector(".program-back").textContent = student.program;
   document.querySelector(".back-degree-type").textContent = student.degree;
   document.querySelector(".accreditation").textContent = student.accreditation;
 }
-
-const testStudent = {
-  name: "Maria Eduarda Silva",
-  gender: "feminino",
-  degree: "bachelor",
-  program: "Sistemas de Informação",
-  birthState: "Minas Gerais",
-  birthDate: "11 de janeiro de 1996",
-  documentType: "RG",
-  documentNumber: "MG-18.743.162",
-  issuingAuthority: "PC-MG",
-  endDate: "01/03/2024",
-  graduationDate: "19 de dezembro de 2025",
-  issueDate: "20 de dezembro de 2025",
-  accreditation:
-    "Renovação de Reconhecimento – Resolução SEE nº 4.787, de 09/11/2022, publicado em 11/11/2022."
-};
-
-fillDiploma(testStudent);
