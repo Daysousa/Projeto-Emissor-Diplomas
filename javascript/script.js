@@ -4,6 +4,15 @@ const btnBack = document.getElementById("btnBack");
 const front = document.querySelector(".front");
 const back = document.querySelector(".back");
 
+const spreadsheetFile = document.getElementById("spreadsheetFile");
+const generateFile = document.getElementById("generateFile");
+
+const previousStudent = document.getElementById("previousStudent");
+const nextStudent = document.getElementById("nextStudent");
+
+let students = [];
+let currentStudentIndex = 0;
+
 btnFront.addEventListener("click", () => {
   front.classList.add("active");
   back.classList.remove("active");
@@ -14,11 +23,31 @@ btnBack.addEventListener("click", () => {
   front.classList.remove("active");
 });
 
-let students = [];
-let currentStudentIndex = 0;
+previousStudent.addEventListener("click", () => {
+  if (students.length === 0) {
+    alert("Nenhuma planilha carregada.");
+    return;
+  }
 
-const spreadsheetFile = document.getElementById("spreadsheetFile");
-const generateFile = document.getElementById("generateFile");
+  if (currentStudentIndex > 0) {
+    currentStudentIndex--;
+    fillDiploma(students[currentStudentIndex]);
+    updateStudentCounter();
+  }
+});
+
+nextStudent.addEventListener("click", () => {
+  if (students.length === 0) {
+    alert("Nenhuma planilha carregada.");
+    return;
+  }
+
+  if (currentStudentIndex < students.length - 1) {
+    currentStudentIndex++;
+    fillDiploma(students[currentStudentIndex]);
+    updateStudentCounter();
+  }
+});
 
 generateFile.addEventListener("click", () => {
   const file = spreadsheetFile.files[0];
@@ -45,6 +74,7 @@ generateFile.addEventListener("click", () => {
 
     if (students.length > 0) {
       fillDiploma(students[currentStudentIndex]);
+      updateStudentCounter();
     }
   };
 
@@ -94,7 +124,6 @@ function fillDiploma(student) {
     student.degree
   );
 
-  // Diploma frente
   document.querySelector(".academicDegree").textContent = texts.degreeTitle;
   document.querySelector(".program").textContent = student.program;
   document.querySelector(".student-name").textContent = student.name;
@@ -117,8 +146,12 @@ function fillDiploma(student) {
   document.querySelector(".graduate-signature p").textContent =
     texts.words.graduate;
 
-  // Diploma verso
   document.querySelector(".program-back").textContent = student.program;
   document.querySelector(".back-degree-type").textContent = student.degree;
   document.querySelector(".accreditation").textContent = student.accreditation;
+}
+
+function updateStudentCounter() {
+  document.getElementById("studentCounter").textContent =
+    `Aluno ${currentStudentIndex + 1} de ${students.length}`;
 }
