@@ -63,10 +63,35 @@ generateFile.addEventListener("click", () => {
     const data = new Uint8Array(event.target.result);
     const workbook = XLSX.read(data, { type: "array" });
 
-    const firstSheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[firstSheetName];
+    const studentsSheet = workbook.Sheets["Alunos"];
+    const coursesSheet = workbook.Sheets["Cursos"];
 
-    students = XLSX.utils.sheet_to_json(worksheet);
+    if (!studentsSheet) {
+      alert("A aba 'Alunos' não foi encontrada na planilha.");
+      return;
+    }
+
+    if (!coursesSheet) {
+      alert("A aba 'Cursos' não foi encontrada na planilha.");
+      return;
+    }
+
+    const courses = XLSX.utils.sheet_to_json(coursesSheet);
+
+    students = XLSX.utils.sheet_to_json(studentsSheet).map((student) => {
+      const course = courses.find((course) => {
+        return (
+          String(course.program).trim().toLowerCase() ===
+          String(student.program).trim().toLowerCase()
+        );
+      });
+
+      return {
+        ...student,
+        accreditation: course ? course.accreditation : "",
+        degree: student.degree || (course ? course.degree : "")
+      };
+    });
 
     console.log(students);
 
@@ -147,8 +172,25 @@ function fillDiploma(student) {
     texts.words.graduate;
 
   document.querySelector(".program-back").textContent = student.program;
-  document.querySelector(".back-degree-type").textContent = student.degree;
-  document.querySelector(".accreditation").textContent = student.accreditation;
+  document.querySelector(".back-degree-type").textContent = formatDegreeLabel(
+    student.degree
+  );
+  document.querySelector(".accreditation").textContent =
+    student.accreditation || "Reconhecimento não informado.";
+}
+
+function formatDegreeLabel(degree) {
+  const formattedDegree = String(degree).trim().toLowerCase();
+
+  if (formattedDegree === "bachelor" || formattedDegree === "bacharelado") {
+    return "Bacharelado";
+  }
+
+  if (formattedDegree === "licentiate" || formattedDegree === "licenciatura") {
+    return "Licenciatura";
+  }
+
+  return degree;
 }
 
 function updateStudentCounter() {
