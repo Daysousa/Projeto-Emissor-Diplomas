@@ -172,53 +172,56 @@ button:hover {
 .diploma-back {
   width: 297mm;
   height: 210mm;
-  background-color: white;
+  background-color: #fafafa;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   overflow: hidden;
 }
 
 .back-frame {
-  width: 110mm;
-  height: 135mm;
-  border: 1px solid #000;
-  margin-top: 15mm;
-  margin-left: 10mm;
-  padding: 5mm 2mm;
+  position: absolute;
+  top: 7mm;
+  left: 7mm;
+  width: 107mm;
+  height: 128mm;
+  border: 5mm 2mm 2mm 2mm;
   display: flex;
   flex-direction: column;
+  font-family: "Calibri", Arial, sans-serif;
+  color: #000;
 }
 
 .back-text {
-  text-align: center;
-  margin-bottom: 2mm;
+  text-align: left;
+  margin: 0;
 }
 
 .back-text p {
-  font-family: "century-italic", sans-serif;
-  font-size: 10pt;
-  color: #000;
-}
-
-.back-text p {
-  font-family: "century-italic", sans-serif;
-  font-size: 10pt;
-  line-height: 1.35;
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.25;
   text-align: left;
   color: #000;
-  margin-bottom: 6mm;
+  margin-bottom: 0 0 6mm 0;
+}
+.back-row {
+  margin-top: 0 0 3mm 0;
+  padding-top: 0;
+  text-align: left;
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 9.5pt;
+  color: #000;
 }
 
 .back-row p {
-  font-family: "Calibri", Arial, sans-serif;
-  font-size: 10pt;
+  font-size: 9.5pt;
   color: #000;
-  line-height: 2.5;
+  line-height: 1.3;
 }
 
 .field-row {
   display: inline-block;
-  width: 24.5mm;
+  width: 24mm;
   height: 4mm;
   border-bottom: 1px solid #000;
   vertical-align: middle;
@@ -226,7 +229,7 @@ button:hover {
 
 .process-field {
   display: inline-block;
-  width: 87mm;
+  width: 82mm;
   height: 4mm;
   border-bottom: 1px solid #000;
   vertical-align: middle;
@@ -234,51 +237,54 @@ button:hover {
 
 .back-date {
   text-align: right;
-  margin-bottom: 12mm;
-  line-height: 2;
+  font-size: 9.5pt;
+  margin-top: 3mm;
+  margin-bottom: 10mm;
+  line-height: 1.2;
 }
 
 .back-date p {
+  margin: 0;
   font-family: "Calibri", Arial, sans-serif;
-  font-size: 10pt;
+  font-size: 9.5pt;
   color: #000;
 }
 
 .back-center {
-  margin-top: 1mm;
   text-align: center;
+  font-size: 9.5pt;
+  line-height: 1.25;
+  margin-top: 2mm;
 }
 
 .back-center p {
   font-family: "Calibri", Arial, sans-serif;
-  font-size: 10pt;
+  font-size: 9.5pt;
   color: #000;
+  margin: 0;
 }
 
 .academic-unit-title {
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 2mm !important;
 }
 
 .back-program-name {
-  margin-top: 2mm;
-  margin-bottom: 1mm;
+  margin-bottom: 1mm !important;
 }
 
 .accreditation {
   margin-top: 0;
 }
 
-.back-row {
-  margin-top: 17mm;
-  padding-top: 5mm;
+.back-frame .back-row:last-child {
+  margin-top: auto;
   text-align: center;
-  font-family: Calibri, Arial, sans-serif;
-  font-size: 10pt;
-  color: #000;
+  padding-bottom: 0;
 }
 
 .diploma-page {
+  display: none;
   width: 297mm;
   height: 210mm;
   background-color: #fff;
